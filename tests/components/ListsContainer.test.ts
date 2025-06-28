@@ -16,6 +16,6 @@ describe('ListContainer component test', async () => {
 
     // When
     // Then
-    expect(wrapper.findAllComponents({name: 'ListCard'}).length).toBe(2)
+    expect(wrapper.findAllComponents({name: 'ListCard'}).length).toBe(3)
   })
 })
