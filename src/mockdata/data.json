@@ -1,0 +1,44 @@
+{
+  "users": [
+    {
+      "id": "user-1",
+      "name": "Juan Pérez",
+      "email": "juan.perez@email.com",
+      "password": "hashedpassword123",
+      "lists": [
+        {
+          "id": "list-1",
+          "title": "Tareas Personales",
+          "userId": "user-1",
+          "tasks": [
+            {
+              "id": "task-1",
+              "title": "Comprar leche",
+              "done": false,
+              "userId": "user-1"
+            },
+            {
+              "id": "task-2",
+              "title": "Llamar a XXX",
+              "done": true,
+              "userId": "user-1"
+            }
+          ]
+        },
+        {
+          "id": "list-2",
+          "title": "Trabajo",
+          "userId": "user-1",
+          "tasks": [
+            {
+              "id": "task-3",
+              "title": "Enviar informe semanal",
+              "done": false,
+              "userId": "user-1"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
