@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import Header from './components/Header.vue'
 import Button from './components/Button.vue'
 import ListsContainer from './components/ListsContainer.vue'
-import data from './mockdata/data.json'
-import type { User } from './model/User'
-import type { List } from './model/List'
+import { useLists } from './composables/useListsComposable'
+import { computed } from 'vue'
 
-const user = ref<User>(data.users[0])
-const lists = ref<List[]>(user.value.lists)
+const { getUserLists } = useLists()
+
+const lists = computed(() => getUserLists())
 </script>
 
 <template>
