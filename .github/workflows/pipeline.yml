@@ -38,12 +38,12 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v3
         with:
-          role-to-assume: arn:aws:iam::146624863487:role/GitHub-Actions
+          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
           aws-region: us-east-1
-          
+
       - name: Deploy to S3
         run: make deploy
-      
+
       - name: Show deployed website URL
         run: |
           echo '🌐 Website deployed: http://cardp-tasks-frontend-bucket.s3-website-us-east-1.amazonaws.com'
