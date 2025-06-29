@@ -2,13 +2,13 @@
 import type { List } from '../model/List'
 import ListCard from './ListCard.vue'
 
-defineProps<{
+const props = defineProps<{
   lists: List[]
 }>()
 </script>
 <template>
   <div class="lists-container">
-    <ListCard v-for="list in lists" :key="list.id" :list="list" />
+    <ListCard v-for="list in props.lists" :key="list.id" :list="list" />
   </div>
 </template>
 

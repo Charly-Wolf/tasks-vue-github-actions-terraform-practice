@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import type { List } from '../model/List'
 
-defineProps<{
+const props = defineProps<{
   list: List
 }>()
 </script>
 <template>
   <div class="card">
-    <h2 class="list-title">{{ list.title }}</h2>
-    <p class="list-size">{{ list.tasks.length }} tasks</p>
+    <h2 class="list-title">{{ props.list.title }}</h2>
+    <p class="list-size">{{ props.list.tasks.length }} tasks</p>
   </div>
 </template>
 

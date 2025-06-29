@@ -1,9 +1,9 @@
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
   text: string
 }>()
 </script>
 
 <template>
-  <button>{{ text }}</button>
+  <button>{{ props.text }}</button>
 </template>
