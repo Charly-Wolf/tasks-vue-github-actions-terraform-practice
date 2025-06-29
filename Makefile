@@ -9,7 +9,7 @@ install-node-modules:
 	npm install
 
 .PHONY: build
-run: install-node-modules
+build: install-node-modules
 	npm run build
 
 .PHONY: deploy
