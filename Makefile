@@ -8,7 +8,10 @@ test: install-node-modules
 install-node-modules:
 	npm install
 
-# For now only Frontend
-.PHONY: run
-run: 
-	npm run dev
+.PHONY: build
+run: install-node-modules
+	npm run build
+
+.PHONY: deploy
+deploy:
+	aws s3 sync dist/ s3://cardp-tasks-frontend-bucket --delete
