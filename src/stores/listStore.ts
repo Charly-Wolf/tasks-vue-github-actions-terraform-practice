@@ -1,28 +1,15 @@
 import { defineStore } from 'pinia'
-import { useUserStore } from './userStore'
-import type { List } from '@/model/List'
+import { mockLists } from '../mockdata/mockLists.json'
 
-export const useListsStore = defineStore('lists', {
+import type { List } from '@/types/list'
+
+export const useListStore = defineStore('list', {
+  state: () => ({
+    lists: mockLists as List[],
+  }),
+
   getters: {
-    userLists() {
-      const userStore = useUserStore()
-      return userStore.currentUser?.lists || []
-    }
-  },
-  actions: {
-    addList(list: List) {
-      const userStore = useUserStore()
-      if (userStore.currentUser) {
-        userStore.currentUser.lists = [...userStore.currentUser.lists, list]
-      }
-    },
-    toggleTaskDone(listId: string, taskId: string) {
-      const userStore = useUserStore()
-      const list = userStore.currentUser?.lists.find(l => l.id === listId)
-      if (!list) return
-      const task = list.tasks.find(t => t.id === taskId)
-      if (!task) return
-      task.done = !task.done
-    }
+    listsByUser: state => (userId: string) =>
+      state.lists.filter(l => l.userId === userId),
   },
 })

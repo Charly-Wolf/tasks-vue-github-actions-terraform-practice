@@ -12,6 +12,10 @@ install-node-modules:
 build: install-node-modules
 	npm run build
 
+.PHONY: run
+run:
+	npm run dev
+
 .PHONY: deploy
 deploy:
 	aws s3 sync dist/ s3://cardp-tasks-frontend-bucket --delete

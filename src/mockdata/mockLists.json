@@ -1,0 +1,28 @@
+{
+  "mockLists": [
+    {
+      "id": "list1",
+      "userId": "user1",
+      "title": "Grocery Shopping",
+      "createdAt": "2025-06-30T10:00:00Z"
+    },
+    {
+      "id": "list2",
+      "userId": "user1",
+      "title": "Work Tasks",
+      "createdAt": "2025-06-30T11:00:00Z"
+    },
+    {
+      "id": "list3",
+      "userId": "user2",
+      "title": "Home Improvement",
+      "createdAt": "2025-06-29T16:00:00Z"
+    },
+    {
+      "id": "list4",
+      "userId": "user1",
+      "title": "Empty List",
+      "createdAt": "2025-06-29T16:00:00Z"
+    }
+  ]
+}

@@ -1,14 +1,26 @@
 <script setup lang="ts">
-import type { List } from '../model/List'
 import ListCard from './ListCard.vue'
+import { useListStore } from '@/stores/listStore';
+import { computed } from 'vue';
 
 const props = defineProps<{
-  lists: List[]
+  userId: string
 }>()
+
+const listStore = useListStore()
+
+const lists = computed(() => listStore.listsByUser(props.userId))
+
 </script>
+
 <template>
   <div class="lists-container">
-    <ListCard v-for="list in props.lists" :key="list.id" :list="list" />
+    <h2 v-if="lists.length === 0">No lists found</h2>
+    <ul>
+      <li v-for="list in lists" :key="list.id">
+        <ListCard :list="list" />
+      </li>
+    </ul>
   </div>
 </template>
 

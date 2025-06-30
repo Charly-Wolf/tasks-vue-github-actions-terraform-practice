@@ -1,30 +1,19 @@
 import { defineStore } from 'pinia'
-import data from '../mockdata/data.json'
-import type { User } from '@/model/User'
-import type { List } from '@/model/List'
+import type { User } from '@/types/user'
+import { mockUsers } from '../mockdata/mockUsers.json'
 
 export const useUserStore = defineStore('user', {
   state: () => ({
-    currentUserId: 'user-1', // TODO: Replace with actual user ID logic
-    users: data?.users ?? ([] as User[]),
+    users: mockUsers as User[], // TODO
+    currentUser: null as User | null, // Current user is initially null
   }),
-  getters: {
-    allUsers(): User[] {
-      return this.users
-    },
-    currentUser(): User | null {
-      if (!this.users || this.users.length === 0) return null
-      return this.users.find(user => user.id === this.currentUserId) || null
-    },
-  },
   actions: {
     setCurrentUser(userId: string) {
-      this.currentUserId = userId
-    },
-    setCurrentUserLists(lists: List[]) {
-      const user = this.currentUser || null
+      console.log('Setting current user for', userId)
+      const user = this.users.find(u => u.id === userId)
       if (user) {
-        user.lists = lists
+        this.currentUser = user
+        console.log('Current user:', this.currentUser)
       }
     },
   },

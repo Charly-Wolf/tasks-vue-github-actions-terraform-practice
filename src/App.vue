@@ -2,17 +2,26 @@
 import Header from './components/Header.vue'
 import Button from './components/Button.vue'
 import ListsContainer from './components/ListsContainer.vue'
-import { useLists } from './composables/useListsComposable'
-import { computed } from 'vue'
+import { useUserStore } from './stores/userStore'
+import { onMounted } from 'vue'
 
-const { getUserLists } = useLists()
+const userStore = useUserStore()
 
-const lists = computed(() => getUserLists())
+// TODO Login
+const userId: string = "user1"
+
+onMounted(() => {
+  userStore.setCurrentUser(userId)
+
+  console.log("Users:", userStore.users)
+  console.log("Current user:", userStore.currentUser)
+})
 </script>
 
 <template>
   <Header />
-  <ListsContainer :lists="lists" />
+  <h3>{{ userStore.currentUser ? `Welcome ${userStore.currentUser?.name}` : 'Login' }}</h3>
+  <ListsContainer :userId="userId" />
   <Button text="Create list" />
 </template>
 
