@@ -4,19 +4,19 @@ import { mount, RouterLinkStub } from '@vue/test-utils'
 import ListsContainer from '../../src/components/ListsContainer.vue'
 import { createLists, createUser } from '../fixtures'
 import { createPinia, setActivePinia } from 'pinia'
-import { useUserStore } from '../../src/stores/userStore'
-import { RouterLink } from 'vue-router'
 
-describe('ListContainer component test', async () => {
+describe('ListsContainer component test', async () => {
+  let store: ReturnType<typeof useListStore>
+
   beforeEach(() => {
     setActivePinia(createPinia())
+    store = useListStore()
   })
 
   it('should render the list container with correct content', () => {
     // Given
     const userId = 'test-user-1'
-    const listStore = useListStore()
-    listStore.lists = createLists(2)
+    store.lists = createLists(2)
 
     const wrapper = mount(ListsContainer, {
       props: {
@@ -36,8 +36,7 @@ describe('ListContainer component test', async () => {
 
   it("should show 'No lists found' if user has no lists", async () => {
     const userId = 'test-user-1'
-    const listStore = useListStore()
-    listStore.lists = []
+    store.lists = []
 
     const wrapper = mount(ListsContainer, {
       props: { userId },

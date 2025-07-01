@@ -2,7 +2,7 @@ import HomeView from '@/views/HomeView.vue'
 import ListDetailsView from '@/views/ListDetailsView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
-const routes = [
+export const routes = [
   { path: '/', name: 'Home', component: HomeView },
   {
     path: '/lists/:listId/tasks',
