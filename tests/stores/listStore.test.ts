@@ -12,6 +12,32 @@ describe('listStore test', async () => {
     store = useListStore()
   })
 
+  it('should get list by id', async () => {
+    //give
+    const list1: List = createList({ id: 'test-list-1' })
+    const list2: List = createList({ id: 'test-list-2' })
+    store.lists = [list1, list2]
+
+    //when
+    const foundList = store.listById('test-list-1')
+
+    // then
+    expect(foundList).toEqual(list1)
+  })
+
+  it('should return null if list not found by id', async () => {
+    //give
+    const list1: List = createList({ id: 'test-list-1' })
+    const list2: List = createList({ id: 'test-list-2' })
+    store.lists = [list1, list2]
+
+    //when
+    const foundList = store.listById('test-list-3')
+
+    // then
+    expect(foundList).toBeNull()
+  })
+
   it('should get lists by userId', async () => {
     // given
     store.lists = [

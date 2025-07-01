@@ -1,9 +1,11 @@
 import { useListStore } from './../../src/stores/listStore'
 import { beforeEach, describe, expect, it } from 'vitest'
-import { mount } from '@vue/test-utils'
+import { mount, RouterLinkStub } from '@vue/test-utils'
 import ListsContainer from '../../src/components/ListsContainer.vue'
-import { createLists } from '../fixtures'
+import { createLists, createUser } from '../fixtures'
 import { createPinia, setActivePinia } from 'pinia'
+import { useUserStore } from '../../src/stores/userStore'
+import { RouterLink } from 'vue-router'
 
 describe('ListContainer component test', async () => {
   beforeEach(() => {
@@ -19,6 +21,11 @@ describe('ListContainer component test', async () => {
     const wrapper = mount(ListsContainer, {
       props: {
         userId,
+      },
+      global: {
+        stubs: {
+          RouterLink: RouterLinkStub,
+        },
       },
     })
 

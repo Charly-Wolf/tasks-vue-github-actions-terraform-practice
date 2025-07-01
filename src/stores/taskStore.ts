@@ -8,6 +8,7 @@ export const useTaskStore = defineStore('task', {
   }),
 
   getters: {
+    // TODO Validation so no one can get tasks of a non logged in user
     tasksByList: state => (listId: string) =>
       state.tasks.filter(t => t.listId === listId),
   },
