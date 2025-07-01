@@ -1,14 +1,23 @@
 import { defineStore } from 'pinia'
 import type { User } from '@/types/user'
-import { mockUsers } from '../mockdata/mockUsers.json'
 
 export const useUserStore = defineStore('user', {
   state: () => ({
-    users: mockUsers as User[], // TODO
-    currentUser: null as User | null, // Current user is initially null
+    users: [] as User[],
+    currentUser: null as User | null,
   }),
   actions: {
-    setCurrentUser(userId: string) {
+    async fetchUsers() {
+      const res = await fetch('http://localhost:8080/users')
+      console.log('Res:', res)
+      this.users = await res.json()
+    },
+
+    // TODO - Login
+    async setCurrentUser(userId: string) {
+      if (this.users.length === 0) {
+        await this.fetchUsers()
+      }
       const user = this.users.find(u => u.id === userId)
       if (user) {
         this.currentUser = user

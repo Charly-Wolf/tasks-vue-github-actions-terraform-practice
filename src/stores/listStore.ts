@@ -5,7 +5,7 @@ import type { List } from '@/types/list'
 
 export const useListStore = defineStore('list', {
   state: () => ({
-    lists: mockLists as List[],
+    lists: [] as List[],
   }),
 
   getters: {
@@ -16,5 +16,15 @@ export const useListStore = defineStore('list', {
 
     listsByUser: state => (userId: string) =>
       state.lists.filter(l => l.userId === userId),
+  },
+
+  actions: {
+    async fetchListsForCurrentUser(currentUserId: string) {
+      const res = await fetch(
+        `http://localhost:8080/lists/byUser?userId=${currentUserId}`
+      )
+      console.log('Res:', res)
+      this.lists = await res.json()
+    },
   },
 })

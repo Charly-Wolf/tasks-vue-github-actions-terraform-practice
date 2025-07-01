@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import ListCard from './ListCard.vue'
 import { useListStore } from '@/stores/listStore';
-import { computed } from 'vue';
+import { computed, onMounted } from 'vue';
 
-const props = defineProps<{
+defineProps<{
   userId: string
 }>()
 
 const listStore = useListStore()
 
-const lists = computed(() => listStore.listsByUser(props.userId))
+const lists = computed(() => listStore.lists)
 
 </script>
 
