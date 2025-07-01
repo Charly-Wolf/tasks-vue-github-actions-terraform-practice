@@ -15,7 +15,7 @@ const lists = computed(() => listStore.listsByUser(props.userId))
 
 <template>
   <div class="lists-container">
-    <h2 v-if="lists.length === 0">No lists found</h2>
+    <h2 class="no-lists-header" v-if="lists.length === 0">No lists found</h2>
     <ul>
       <li v-for="list in lists" :key="list.id">
         <ListCard :list="list" />
@@ -28,7 +28,10 @@ const lists = computed(() => listStore.listsByUser(props.userId))
 .lists-container {
   display: flex;
   flex-direction: column;
-  width: 90vw;
   align-items: center;
+}
+
+li {
+  list-style-type: none;
 }
 </style>

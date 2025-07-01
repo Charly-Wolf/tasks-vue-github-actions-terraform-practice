@@ -6,7 +6,7 @@ test: install-node-modules
 
 .PHONY: install-node-modules
 install-node-modules:
-	npm ci
+	@test -d node_modules || npm ci
 
 .PHONY: build
 build: install-node-modules

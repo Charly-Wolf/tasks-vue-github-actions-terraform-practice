@@ -9,11 +9,9 @@ export const useUserStore = defineStore('user', {
   }),
   actions: {
     setCurrentUser(userId: string) {
-      console.log('Setting current user for', userId)
       const user = this.users.find(u => u.id === userId)
       if (user) {
         this.currentUser = user
-        console.log('Current user:', this.currentUser)
       }
     },
   },

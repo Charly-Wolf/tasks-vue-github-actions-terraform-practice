@@ -12,9 +12,6 @@ const userId: string = "user1"
 
 onMounted(() => {
   userStore.setCurrentUser(userId)
-
-  console.log("Users:", userStore.users)
-  console.log("Current user:", userStore.currentUser)
 })
 </script>
 
