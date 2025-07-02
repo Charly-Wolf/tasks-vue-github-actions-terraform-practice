@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import type { User } from '@/types/user'
+import { API_URL } from '@/constants/constants'
 
 export const useUserStore = defineStore('user', {
   state: () => ({
@@ -8,7 +9,7 @@ export const useUserStore = defineStore('user', {
   }),
   actions: {
     async fetchUsers() {
-      const res = await fetch('http://localhost:8080/users')
+      const res = await fetch(`${API_URL}/users`)
       console.log('Res:', res)
       this.users = await res.json()
     },

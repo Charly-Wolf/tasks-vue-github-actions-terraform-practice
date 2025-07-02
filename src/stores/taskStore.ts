@@ -1,5 +1,6 @@
 import type { Task } from '@/types/task'
 import { defineStore } from 'pinia'
+import { API_URL } from '@/constants/constants'
 
 export const useTaskStore = defineStore('task', {
   state: () => ({
@@ -14,7 +15,7 @@ export const useTaskStore = defineStore('task', {
 
   actions: {
     async fetchTasks() {
-      const res = await fetch(`http://localhost:8080/tasks`)
+      const res = await fetch(`${API_URL}/tasks`)
       console.log('Res:', res)
       this.tasks = await res.json()
     },

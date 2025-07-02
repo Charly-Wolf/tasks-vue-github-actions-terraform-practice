@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { mockLists } from '../mockdata/mockLists.json'
+import { API_URL } from '@/constants/constants'
 
 import type { List } from '@/types/list'
 
@@ -20,9 +20,7 @@ export const useListStore = defineStore('list', {
 
   actions: {
     async fetchListsForCurrentUser(currentUserId: string) {
-      const res = await fetch(
-        `http://localhost:8080/lists/byUser?userId=${currentUserId}`
-      )
+      const res = await fetch(`${API_URL}/lists/byUser?userId=${currentUserId}`)
       console.log('Res:', res)
       this.lists = await res.json()
     },
